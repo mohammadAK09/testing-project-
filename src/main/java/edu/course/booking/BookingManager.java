@@ -15,17 +15,7 @@ public class BookingManager {
     }
 
     public BookingResult book(BookingRequest request) {
-        if (request == null ||
-            request.customerId() == null ||
-            request.customerId().isBlank() ||
-            request.eventId() == null ||
-            request.eventId().isBlank() ||
-            request.ticketQuantity() < 1 ||
-            request.ticketQuantity() > 5 ||
-            request.pricePerTicketInCents() <= 0) {
-            throw new IllegalArgumentException(
-                "Invalid booking request");
-        }
+        validateRequest(request);
 
         if (repository.isSoldOut(request.eventId())) {
             return new BookingResult(false, null);
@@ -50,6 +40,20 @@ public class BookingManager {
         );
 
         return new BookingResult(true, tx);
+    }
+
+    private void validateRequest(BookingRequest request) {
+        if (request == null ||
+            request.customerId() == null ||
+            request.customerId().isBlank() ||
+            request.eventId() == null ||
+            request.eventId().isBlank() ||
+            request.ticketQuantity() < 1 ||
+            request.ticketQuantity() > 5 ||
+            request.pricePerTicketInCents() <= 0) {
+            throw new IllegalArgumentException(
+                "Invalid booking request");
+        }
     }
 
     private long calculateTotalAmount(BookingRequest request) {
