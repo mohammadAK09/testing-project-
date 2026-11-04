@@ -1,8 +1,6 @@
-
 package edu.course.booking;
 
 public class BookingManager {
-
     private final IPaymentGateway payment;
     private final INotificationService notification;
     private final IEventRepository repository;
@@ -11,45 +9,47 @@ public class BookingManager {
             IPaymentGateway payment,
             INotificationService notification,
             IEventRepository repository) {
-
         this.payment = payment;
         this.notification = notification;
         this.repository = repository;
     }
 
     public BookingResult book(BookingRequest request) {
+        if (request == null ||
+            request.customerId() == null ||
+            request.customerId().isBlank() ||
+            request.eventId() == null ||
+            request.eventId().isBlank() ||
+            request.ticketQuantity() < 1 ||
+            request.ticketQuantity() > 5 ||
+            request.pricePerTicketInCents() <= 0) {
+            throw new IllegalArgumentException(
+                "Invalid booking request");
+        }
 
-        // 1. Check event availability
         if (repository.isSoldOut(request.eventId())) {
             return new BookingResult(false, null);
         }
 
-        // 2. Calculate total amount
-        long totalAmount = calculateTotalAmount(request);
+        long total = calculateTotalAmount(request);
+        String tx = payment.processPayment(total);
 
-        // 3. Process payment
-        String transactionId = payment.processPayment(totalAmount);
-
-        // 4. Create and save booking
         Booking booking = new Booking(
-                request.customerId(),
-                request.eventId(),
-                request.ticketQuantity(),
-                totalAmount,
-                transactionId
+            request.customerId(),
+            request.eventId(),
+            request.ticketQuantity(),
+            total,
+            tx
         );
 
         repository.saveBooking(booking);
-
-        // 5. Send confirmation
         notification.sendConfirmation(
-                request.customerId(),
-                request.eventId(),
-                transactionId
+            request.customerId(),
+            request.eventId(),
+            tx
         );
 
-        // 6. Return success
-        return new BookingResult(true, transactionId);
+        return new BookingResult(true, tx);
     }
 
     private long calculateTotalAmount(BookingRequest request) {
