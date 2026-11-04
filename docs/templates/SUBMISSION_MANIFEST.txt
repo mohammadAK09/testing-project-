@@ -1,0 +1,32 @@
+SOFTWARE TESTING PROJECT SUBMISSION MANIFEST
+
+Course: Software Testing (2010031410)
+Milestone: [1 or 2]
+Group number:
+
+TEAM MEMBERS
+1. Name / Student ID / GitHub username:
+2. Name / Student ID / GitHub username:
+3. Name / Student ID / GitHub username:
+
+REPOSITORY
+Repository URL:
+Final commit hash:
+Java version:
+Maven version:
+Build and test command: mvn clean test
+Test execution result: [PASS / FAIL]
+Number of tests executed:
+
+AI USE DECLARATION
+Select one:
+[ ] No generative AI or coding assistant materially influenced assessed work.
+[ ] Generative AI or coding assistants materially influenced assessed work, and the AI Use Log is included in the report appendix.
+
+We confirm that all AI-assisted output was reviewed and verified, all submitted work can be explained and modified by the team, and no Git history, test results, references, or contribution evidence was fabricated.
+
+CONTRIBUTION DECLARATION
+We confirm that the contribution matrix and repository history accurately represent the work of the team.
+
+Names and signatures or typed confirmations:
+Date:
