@@ -4,6 +4,7 @@
 
 - **Course:** Software Testing
 - **Milestone:** Milestone 1
+- **Group number:** [ENTER GROUP NUMBER]
 - **Student names and IDs:** moath abd salam bani fadel 2334657, mohammad omar abu khorj 2332768
 - **Repository URL:** https://github.com/mohammadAK09/testing-project-
 - **Final commit hash:** [ENTER FINAL SUBMISSION COMMIT HASH AFTER FINAL MERGE]
@@ -21,9 +22,10 @@ The system intentionally excludes a GUI, real database, real payment service, an
 - **Command:** `mvn clean test`
 - **Last recorded execution:** November 11, 2026
 - **Result:** `BUILD SUCCESS`
-- **Total tests:** 17; **failures:** 0; **errors:** 0; **skipped:** 0
-- **Booking tests:** 13 (1 successful booking, 10 parameterized invalid requests, 1 sold-out event, 1 payment failure)
+- **Total tests:** 18; **failures:** 0; **errors:** 0; **skipped:** 0
+- **Booking tests:** 14 (1 successful booking, 10 parameterized invalid requests, 1 null-request test, 1 sold-out event, 1 payment failure)
 - **Starter example tests:** 4 (`EvenNumberCheckerTest`)
+- **JaCoCo coverage:** 100% instruction coverage and 100% branch coverage in the local report generated on November 11, 2026 after adding the null-request test (measured code only; coverage does not prove correctness).
 
 These figures describe the recorded local run on the team's feature branch; rerun the suite and update this section if the submitted code changes.
 
@@ -45,6 +47,7 @@ Constructor injection makes the class testable in isolation: Mockito mocks repla
 |---|---|---|
 | Successful booking | `BookingManagerTest` | Success result and transaction ID; availability, payment, saving, and confirmation called |
 | Invalid request | `BookingManagerValidationTest` | 10 parameterized cases rejected with `IllegalArgumentException`; no dependency interactions |
+| Null booking request | `BookingManagerNullRequestTest` | A null request is rejected with `IllegalArgumentException`; no dependency interactions |
 | Sold-out event | `BookingManagerSoldOutTest` | Unsuccessful result; availability checked once; no payment, saving, or confirmation |
 | Payment failure | `BookingManagerPaymentFailureTest` | Payment exception propagates; no booking saved or confirmation sent |
 
@@ -88,8 +91,8 @@ The Input Space Model, Constraints and Infeasible Combinations, Pair-Wise Test S
 
 | Student name and ID | Main responsibilities | Key files or report sections | Representative commits | Contribution confirmed by team |
 |---|---|---|---|---|
-| moath abd salam bani fadel / 2334657 | Successful booking implementation, shared domain classes and interfaces, successful-booking unit test, first TDD cycle | `src/main/java/edu/course/booking/`, `BookingManagerTest.java`, TDD Behavior 1 | `036cd3d`, `b3315ff`, `b7ff9e2`, `0d3a1f4` | yes |
-| mohammad omar abu khorj / 2332768 | Invalid-input parameterized tests and validation implementation, second TDD cycle, sold-out and payment-failure tests, documentation | `BookingManagerValidationTest.java`, `BookingManagerSoldOutTest.java`, `BookingManagerPaymentFailureTest.java`, `docs/M1_VALIDATION_TEST_CASES.md`, report draft | `b2c2a54`, `c04f75a`, `db672d7`, `1d0f9bc`, `76ac2bf`, `7db9908` | yes |
+| moath abd salam bani fadel / 2334657 | Successful booking implementation, shared domain classes and interfaces, successful-booking unit test, first TDD cycle, null-request test and coverage review | `src/main/java/edu/course/booking/`, `BookingManagerTest.java`, `BookingManagerNullRequestTest.java`, TDD Behavior 1 | `036cd3d`, `b3315ff`, `b7ff9e2`, `0d3a1f4`, `6ab354b` | [TEAM TO CONFIRM] |
+| mohammad omar abu khorj / 2332768 | Invalid-input parameterized tests and validation implementation, second TDD cycle, sold-out and payment-failure tests, documentation | `BookingManagerValidationTest.java`, `BookingManagerSoldOutTest.java`, `BookingManagerPaymentFailureTest.java`, `docs/M1_VALIDATION_TEST_CASES.md`, report draft | `b2c2a54`, `c04f75a`, `db672d7`, `1d0f9bc`, `76ac2bf`, `7db9908`, `0becc87` | [TEAM TO CONFIRM] |
 
 Responsibilities and authorship must be confirmed against the final Git history and by both team members. AI-assisted material is disclosed below and must be reviewed by the team.
 
@@ -101,7 +104,8 @@ Material assistance from ChatGPT was used in developing code, tests, and report 
 |---|---|---|---|---|---|
 | Nov 4, 2026 | ChatGPT | Guidance on successful-booking test, implementation, and Red–Green–Refactor workflow | `BookingManagerTest.java`, booking production classes | Failing and passing Maven test runs recorded; team must confirm independent code review | Accepted/modified during development |
 | Nov 4, 2026 | ChatGPT | Guidance on input validation, fixing misplaced file contents, and validation refactor | `BookingManager.java`, validation TDD workflow | Recorded 10 validation failures followed by passing tests; manual review to confirm | Accepted/modified during development |
-| Nov 11, 2026 | ChatGPT | Suggested unit tests for sold-out events and payment failure | `BookingManagerSoldOutTest.java`, `BookingManagerPaymentFailureTest.java` | Both tests passed; full run reported 17 tests, zero failures | Accepted during development |
+| Nov 11, 2026 | ChatGPT | Suggested unit tests for sold-out events and payment failure | `BookingManagerSoldOutTest.java`, `BookingManagerPaymentFailureTest.java` | Both tests passed; full suite later passed with 18 tests, zero failures | Accepted during development |
+| Nov 11, 2026 | ChatGPT | Suggested a null-request test after examining JaCoCo coverage gaps | `BookingManagerNullRequestTest.java`, coverage review | Test passed; full suite passed with 18 tests and JaCoCo reported 100% instruction and branch coverage | Accepted during development |
 | Nov 11, 2026 | ChatGPT | Drafted technical descriptions, TDD evidence, and report structure | `docs/M1_REPORT_DRAFT.md` | **Pending team review and verification of final text and commit references** | Draft — pending review |
 
 **Before submission:** Replace every square-bracket placeholder, confirm the contribution matrix, independently inspect the requirements and test assertions, confirm the report accurately describes the final version, rerun `mvn clean test`, record the final assessed commit hash, and prepare the required PDF, submission manifest, bundle, and ZIP according to the submission checklist.
