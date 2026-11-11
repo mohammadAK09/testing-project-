@@ -50,11 +50,15 @@ JUnit 5 parameterized testing is used to execute multiple invalid input cases th
 Mockito is used to create mock dependencies and verify that no external interactions occur when invalid input is provided.
 
 6-Execution Status
-The validation test cases have been written, but their successful execution has not yet been verified.
 
-The initial compilation failure occurred because the required production classes were not yet available on this branch.
+The validation tests were successfully executed on November 11, 2026.
 
-The tests must be executed again after integrating the BookingManager implementation.
+All 10 invalid booking test cases passed.
+
+The complete Maven test suite passed with 17 tests, 0 failures, and 0 errors.
+
+Command: mvn clean test
+Result: BUILD SUCCESS
 
 7-Limitations
 The selected test cases cover representative invalid inputs but do not exhaust every possible invalid value or combination of invalid fields.
