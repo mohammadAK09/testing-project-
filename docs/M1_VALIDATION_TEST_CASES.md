@@ -55,7 +55,7 @@ The validation tests were successfully executed on November 11, 2026.
 
 All 10 invalid booking test cases passed.
 
-The complete Maven test suite passed with 17 tests, 0 failures, and 0 errors.
+The complete Maven test suite passed with 18 tests, 0 failures, and 0 errors.
 
 Command: mvn clean test
 Result: BUILD SUCCESS
