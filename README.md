@@ -1,59 +1,45 @@
-# Software Testing Semester Project Starter
+# Ticket Booking System
 
-This repository contains the setup and templates for the semester Ticket Booking System project. It provides configuration and guidance only. It does **not** provide solutions to the assessed requirements.
+## Software Testing - Milestone 1
 
-## Quick start
+A Java 17 Ticket Booking System developed using Test-Driven Development (TDD).
 
-### Requirements
+## Technologies
+- Java 17
+- Maven
+- JUnit 5
+- Mockito
+- JaCoCo
 
-- Java 17 or later
-- Maven 3.9 or later
-- Git
+## Features
+- Successful ticket booking
+- Invalid request validation
+- Sold-out event handling
+- Payment failure handling
 
-Check your installation:
+## Architecture
+BookingManager uses constructor dependency injection with three interfaces:
+- IPaymentGateway
+- INotificationService
+- IEventRepository
 
-```bash
-java -version
-mvn -version
-git --version
-```
+## Testing
+18 automated tests passed with 0 failures.
 
-Run all tests:
+JaCoCo reported 100% instruction and branch coverage for the measured code.
 
-```bash
+Run tests:
 mvn clean test
-```
 
-Generate the optional JaCoCo report:
+## TDD
+Two Red-Green-Refactor cycles are documented in the Milestone 1 report.
 
-```bash
-mvn clean test jacoco:report
-```
+## Documentation
+- docs/M1_REPORT_DRAFT.md
+- docs/M1_VALIDATION_TEST_CASES.md
 
-The HTML report will be available at `target/site/jacoco/index.html`.
+## Team
+Moath and Mohammad
 
-## Where to work
-
-- Production code: `src/main/java/edu/course/booking/`
-- Test code: `src/test/java/edu/course/booking/`
-- Report and submission templates: `docs/templates/`
-- Student guides: `docs/guides/`
-
-You may add small supporting classes and packages when needed. Do not add a GUI, database, REST API, or real external integrations.
-
-## Suggested workflow
-
-1. Read `PROJECT_SPECIFICATION.md`.
-2. Add all team members to the repository.
-3. Complete `docs/templates/TEAM_CONTRIBUTION_MATRIX.md` as work progresses.
-4. For TDD work, commit the failing test, the minimum implementation, and any meaningful refactoring.
-5. Run `mvn clean test` before pushing.
-6. Complete the report, manifest, AI declaration/log, and checklist.
-7. Create the Moodle submission using the script in `scripts/` or the equivalent commands in the submission guide.
-
-## Important
-
-- Do not commit passwords, tokens, private data, or build output.
-- All group members must make meaningful commits from their own accounts.
-- AI-assisted work must be reviewed, verified, and disclosed as required by the specification.
-- The submitted commit hash must match the assessed repository state.
+## Status
+Milestone 1 - Final review and submission preparation.
